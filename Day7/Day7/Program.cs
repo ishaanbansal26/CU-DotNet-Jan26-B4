@@ -4,6 +4,7 @@
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Enter : gateCode | userInitial | accessLevel | isActive | attempts");
             string input = Console.ReadLine()!;
             string[] inputs = input.Split('|');
             string gateCode = inputs[0];
