@@ -11,7 +11,7 @@
             string std_message = "login successful";
 
             //Business Rules
-            string status = "";
+            string status = string.Empty;
             if (message.Contains("successful") && message.Equals(std_message)){
                 status = "LOGIN SUCCESS";
                 //Console.WriteLine(status);
