@@ -48,10 +48,16 @@ namespace Day10
             for (int i = 0; i < input.Length; i++)
             {
                 input[i] = decimal.Parse(Console.ReadLine()!);
-                if (input[i] < 0)
+                while (input[i]<0)
                 {
-                    input[i] = Math.Abs(input[i]);
+                    Console.WriteLine("Enter the valid input :");
+                    input[i] = decimal.Parse(Console.ReadLine()!);
                 }
+                
+                //if (input[i] < 0)
+                //{
+                //    input[i] = Math.Abs(input[i]);
+                //}
 
                 sales[index++] = input[i]; 
             }
