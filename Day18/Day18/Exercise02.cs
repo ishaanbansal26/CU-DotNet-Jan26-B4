@@ -22,7 +22,7 @@ namespace Day18
             ExperienceInYears = years;
         }
 
-        public decimal CalculateAnnualSalary()
+        public virtual decimal CalculateAnnualSalary()
         {
             Console.WriteLine("Employee ");
             annualSalary = BasicSalary * 12;
@@ -47,7 +47,7 @@ namespace Day18
             
         }
 
-        public new decimal CalculateAnnualSalary()
+        public override decimal CalculateAnnualSalary()
         {
             houseRentAllowance = 0.2m * BasicSalary;
             specialAllowance = 0.1m * BasicSalary;
@@ -73,7 +73,7 @@ namespace Day18
             
         }
 
-        public new decimal CalculateAnnualSalary()
+        public override decimal CalculateAnnualSalary()
         {
             annualSalary = BasicSalary * 12;
             if (ContactDurationInMonths >= 12)
@@ -93,7 +93,7 @@ namespace Day18
             annualSalary = BasicSalary * 12;
         }
 
-        public new decimal CalculateAnnualSalary()
+        public override decimal CalculateAnnualSalary()
         {
             Console.WriteLine("Intern Employee");
             return annualSalary; 
@@ -104,17 +104,20 @@ namespace Day18
     {
         static void Main(string[] args)
         {
-            Employee emp1 = new Employee(1,"raju",7650,5);
-            PermanentEmployee emp2 = new PermanentEmployee(1, "taju", 7650, 5);
-            ContactEmployee emp3 = new ContactEmployee(1, "kaju", 7650, 5)
+            Employee[] e =
             {
-                ContactDurationInMonths = 12,
+                new PermanentEmployee(1,"abc",781,5),
+                new ContactEmployee(1, "abc", 781, 5)
+                {
+                    ContactDurationInMonths = 12,
+                },
+                new InternEmployee(1,"abc",781,5)
             };
 
-            Console.WriteLine(emp1.CalculateAnnualSalary());
-            Console.WriteLine(emp2.CalculateAnnualSalary());
-            Console.WriteLine(emp3.CalculateAnnualSalary());
-            Console.WriteLine(emp1.DisplayEmployeeDetails());
+            for (int i = 0; i < e.Length; i++) 
+            {
+                Console.WriteLine(e[i].CalculateAnnualSalary());
+            }
 
         }
     }

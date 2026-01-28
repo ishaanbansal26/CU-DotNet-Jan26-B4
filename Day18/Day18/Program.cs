@@ -22,7 +22,7 @@
             TenureInYears = tenure;
         }
 
-        public string CalculateEMI()
+        public virtual string CalculateEMI()
         {
             double emi = ((double)(PrincipalAmount) * 10 * (double)TenureInYears) / 100d;
             return Convert.ToString(emi);
@@ -42,7 +42,7 @@
 
         }
 
-        public new string CalculateEMI()
+        public override string CalculateEMI()
 
         {
             Console.WriteLine("home loan");
@@ -59,7 +59,7 @@
 
         }
         int insurance = 15000;
-        public new string CalculateEMI()
+        public override string CalculateEMI()
         {
             Console.WriteLine("car loan");
             double emi = ((double)(PrincipalAmount + insurance) * 9 * (double)TenureInYears) / 100d;
@@ -71,8 +71,8 @@
         static void Main(string[] args)
         {
             Loan[] lo =
-            {
-                new Loan("abc", "hig", 986, 2),
+           {
+                //new Loan("abc", "hig", 986, 2),
                 new HomeLoan("cad", "haag", 986, 2),
                 new HomeLoan("dfe", "poig", 988996, 2),
                 new CarLoan("ggy", "uig", 986, 2),
@@ -80,7 +80,7 @@
 
             for (int i = 0; i < lo.Length; i++)
             {
-                Console.WriteLine($"{lo[i]} {lo[i].CalculateEMI()}");
+                Console.WriteLine($" {lo[i]} {lo[i].CalculateEMI()}");
             }
 
 
