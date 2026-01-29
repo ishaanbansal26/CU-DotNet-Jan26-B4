@@ -38,7 +38,7 @@
             {
                 new Flight()
                 {
-                    FlightNumber = "764",
+                    FlightNumber = "EF764",
                     Price = 33000,
                     Duration = new TimeSpan(05,30,00),
                     DepartureTime = new DateTime(2026,05,10,05,30,00)
@@ -46,7 +46,7 @@
 
                 new Flight()
                 {
-                    FlightNumber = "762",
+                    FlightNumber = "AB762",
                     Price = 30000,
                     Duration = new TimeSpan(07,30,00),
                     DepartureTime = new DateTime(2026,05,13,07,30,00)
@@ -54,7 +54,7 @@
 
                 new Flight()
                 {
-                    FlightNumber = "760",
+                    FlightNumber = "CD760",
                     Price = 39000,
                     Duration = new TimeSpan(04,30,00),
                     DepartureTime = new DateTime(2026,05,11,06,30,00)
