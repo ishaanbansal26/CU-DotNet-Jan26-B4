@@ -24,7 +24,7 @@ namespace Day15
             Feet = (int)inches / 12;
             Inches = inches%12;
         }
-        public Height AddHeights(Height h2)
+        /*public Height AddHeights(Height h2)
         {
             int h = this.Feet + h2.Feet;
             double i = this.Inches+h2.Inches;
@@ -36,8 +36,20 @@ namespace Day15
             Height added = new Height(h, i);
             return added;
             //return $"{h} feet {i:F1} inches";
+        }*/
+        public static Height operator +(Height h1, Height h2)
+        {
+            int h = h1.Feet + h2.Feet;
+            double i = h1.Inches + h2.Inches;
+            if (i >= 12.0)
+            {
+                h++;
+                i = i - 12;
+            }
+            Height added = new Height(h, i);
+            return added;
+            //return $"{h} feet {i:F1} inches";
         }
-
         public override string ToString()
         {
             return $"{Feet} feet {Inches:F1} inches";
@@ -60,7 +72,8 @@ namespace Day15
             Console.WriteLine(person2);
             Console.WriteLine(person3);
 
-           Height value = person1.AddHeights(person2);
+           //Height value = person1.AddHeights(person2);
+           Height value = person1+person2;
            Console.WriteLine(value);
 
         }
