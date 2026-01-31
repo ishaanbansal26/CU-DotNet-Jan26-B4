@@ -17,21 +17,21 @@
 
         public void PremiumIncrease()
         {
-            foreach (var v in policyDetails.Values)
+            foreach (var v in policyDetails.Keys)
             {
-                if (v.RiskScore > 75)
-                     v.Premium += v.Premium * 0.05m;
+                if (policyDetails[v].RiskScore > 75)
+                     policyDetails[v].Premium += policyDetails[v].Premium * 0.05m;
             }
         }
 
         public bool RemovePolicy()
         {
             DateTime threeYearsAgo = DateTime.Today.AddYears(-3);
-            foreach(var v in policyDetails.Values)
+            foreach(var v in policyDetails.Keys)
             {
-                if (v.RenewalDate < threeYearsAgo)
+                if (policyDetails[v].RenewalDate< threeYearsAgo)
                 {
-                    policyDetails.Remove(v.PolicyId);
+                    policyDetails.Remove(v);
                     return true;
                 }
             }  
@@ -40,10 +40,10 @@
 
         public PolicyTracker SeachPolicy(string id)
         {
-            foreach (var v in policyDetails.Values)
+            foreach (var v in policyDetails.Keys)
             {
-                if(v.PolicyId == id)
-                    return policyDetails[v.PolicyId];
+                if(policyDetails[v].PolicyId == id)
+                    return policyDetails[v];
             }
             return null;
         }

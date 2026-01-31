@@ -65,7 +65,7 @@
             return student;
         }
     }
-    internal class Class1
+    internal class StudentManager
     {
         static void Main(string[] args)
         {
