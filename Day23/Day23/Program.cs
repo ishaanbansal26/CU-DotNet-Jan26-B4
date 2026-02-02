@@ -84,13 +84,11 @@ namespace Day23
                 Console.WriteLine(e.Message);
             }
         }
-        static void Main(string[] args)
+
+        static void CheckArr()
         {
             try
             {
-                checkName();
-                CheckAge();
-                Div();
                 int[] arr = new int[5];
                 Console.WriteLine("Enter the elements of array :");
                 for (int i = 0; i < arr.Length; i++)
@@ -102,10 +100,23 @@ namespace Day23
             catch (IndexOutOfRangeException i)
             {
                 Console.WriteLine(i.Message);
+                throw new Exception();
+            }
+        }
+        static void Main(string[] args)
+        {
+            try
+            {
+                checkName();
+                CheckAge();
+                Div();
+                CheckArr();
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                Console.WriteLine("Message : " + e.Message);
+                Console.WriteLine("InnerException : " + e.InnerException);
+                Console.WriteLine("StackTrace : " + e.StackTrace);
             }
             finally
             {
