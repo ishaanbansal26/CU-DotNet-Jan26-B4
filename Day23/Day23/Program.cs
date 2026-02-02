@@ -1,0 +1,116 @@
+﻿using System.Runtime.InteropServices;
+
+namespace Day23
+{
+    class InvalidStudentNameException : Exception
+    {
+        public InvalidStudentNameException(string message) : base(message)
+        {
+
+        }
+    }
+    class InvalidStudentAgeException : Exception
+    {
+        public InvalidStudentAgeException(string message) : base(message) { }
+    }
+
+    internal class Program
+    {
+        static void checkName()
+        {
+            while (true)
+            {
+                try
+                {
+                    Console.WriteLine("Enter the name : ");
+                    string name = Console.ReadLine();
+                    for (int i = 0; i < name.Length; i++)
+                    {
+                        if (!char.IsLetter(name[i]))
+                        {
+                            throw new InvalidStudentNameException("The name should contain all the letters.");
+                        }
+                    }
+                    Console.WriteLine("you have entered the correct name. Thank you");
+                    break;
+                }
+                catch (InvalidStudentNameException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
+        }
+        static void CheckAge()
+        {
+
+            while (true)
+            {
+                try
+                {
+                    Console.WriteLine("Enter the age :");
+                    int age = int.Parse(Console.ReadLine());
+                    if (age < 18 || age > 60)
+                    {
+                        throw new InvalidStudentAgeException("Age should be between" +
+                            "18 and 60");
+                    }
+                    Console.WriteLine("you have entered the correct age.");
+                    break;
+                }
+
+                catch (InvalidStudentAgeException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
+        }
+
+        static void Div()
+        {
+            try
+            {
+                Console.WriteLine("Enter the first number");
+                int num1 = int.Parse(Console.ReadLine());
+                Console.WriteLine("Enter the second number");
+                int num2 = int.Parse(Console.ReadLine());
+                int div = num1 / num2;
+            }
+            catch (FormatException f)
+            {
+                Console.WriteLine(f.Message);
+            }
+            catch (DivideByZeroException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+        static void Main(string[] args)
+        {
+            try
+            {
+                checkName();
+                CheckAge();
+                Div();
+                int[] arr = new int[5];
+                Console.WriteLine("Enter the elements of array :");
+                for (int i = 0; i < arr.Length; i++)
+                {
+                    arr[i] = int.Parse(Console.ReadLine());
+                }
+                Console.WriteLine(arr[10]);
+            }
+            catch (IndexOutOfRangeException i)
+            {
+                Console.WriteLine(i.Message);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            finally
+            {
+                Console.WriteLine("Operation Completed");
+            }
+        }
+    }
+}
