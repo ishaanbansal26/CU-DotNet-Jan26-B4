@@ -112,6 +112,7 @@ namespace Day23
                 Div();
                 CheckArr();
             }
+
             catch (Exception e)
             {
                 Console.WriteLine("Message : " + e.Message);
