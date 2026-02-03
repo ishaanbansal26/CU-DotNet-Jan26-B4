@@ -26,7 +26,7 @@ namespace Day24
             {
                 if((int)v.Key==102)
                 {
-                    name=(string)v.Value;
+                    name=v.Value as string;
                 }
             }
             Console.WriteLine("The name is : "+name);

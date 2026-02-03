@@ -19,8 +19,21 @@ namespace Day24
 
             Console.WriteLine("The fastest Time is :"+leaderboard.Keys.First());
 
-            
-            leaderboard.Remove(58.91);
+            double it = 0;
+            foreach (var item in leaderboard)
+            {
+                if (item.Value == "SteadyEddie")
+                {
+                    it = item.Key;
+                }
+            }
+            leaderboard.Remove(it);
+            Console.WriteLine();
+            Console.WriteLine("After the deletion ");
+            foreach (var item in leaderboard)
+            {
+                Console.WriteLine(item);
+            }
             leaderboard.Add(54.00, "SteadyEddie");
             Console.WriteLine();
             Console.WriteLine("After the record updation");
