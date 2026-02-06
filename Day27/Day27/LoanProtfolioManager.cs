@@ -1,5 +1,6 @@
 ﻿using System.Net.Http.Headers;
 using System.Runtime.InteropServices;
+using System.Text;
 
 namespace Day27
 {
@@ -32,12 +33,13 @@ namespace Day27
                 //{
                 //    sw.WriteLine(detail);
                 //}
-                Console.WriteLine("Input : ClientName, Prinicpal, InterestRate");
-                Console.WriteLine("Enter the deatils in CSV.");
-                string s = Console.ReadLine();
-                sw.WriteLine(s);
+                //Console.WriteLine("Input : ClientName, Prinicpal, InterestRate");
+                //Console.WriteLine("Enter the deatils in CSV.");
+                //string s = Console.ReadLine();
+                //sw.WriteLine(s);
             }
-            Console.WriteLine("CLIENT       PRINICIPAL         INTEREST       RISKLEVEL");
+            Console.WriteLine("CLIENT           PRINICIPAL       INTEREST      RISKLEVEL");
+            Console.WriteLine("---------------------------------------------------------");
             using (StreamReader sr = new StreamReader(path))
             {
                 do
@@ -68,8 +70,8 @@ namespace Day27
                             Principal = prinicipal,
                             InterestRate = interest
                         };
-
-                        Console.WriteLine($"{l.ClientName,-15}   {l.Principal,-15} {totalInterest,-12}  {riskLevel,-15}");
+                        Console.OutputEncoding = Encoding.Default;
+                        Console.WriteLine($"{l.ClientName,-12}   {l.Principal,12:C2} {totalInterest,15:C2}  {riskLevel,12}");
                     }
                     catch (FormatException e)
                     {
