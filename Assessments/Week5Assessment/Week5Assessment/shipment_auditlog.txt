@@ -1,0 +1,6 @@
+SHIPMENTS AUDIT LOG 
+Valid Shipment : ShipmentId AB101 to Chicago
+Invalid Shipment : ShipmentId AB102 to NorthPole
+Insecure Shipment : ShipmentId AB104 to UnknownIsland
+Valid Shipment : ShipmentId AB103 to NewYork
+Valid Shipment : ShipmentId AB105 to CHANDIGARH
