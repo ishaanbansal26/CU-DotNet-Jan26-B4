@@ -12,7 +12,6 @@
                 string file = "journal.txt";
                 
                 string path = directory + file;
-
                 using (StreamWriter sw = new StreamWriter(path, true))
                 {
                     Console.WriteLine("Enter the things you did today : ");

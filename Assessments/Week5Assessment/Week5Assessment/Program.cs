@@ -55,7 +55,6 @@ namespace Week5Assessment
             Console.WriteLine($"{message}");
         }
     }
-
     internal class Program
     {
         static void Main(string[] args)

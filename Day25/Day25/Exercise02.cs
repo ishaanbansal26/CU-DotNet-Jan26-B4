@@ -60,12 +60,9 @@ namespace Day25
                     pl.Average = pl.CalculateAverage();
                     p.Add(pl);
                 }
-                var v = p.Where(p => p.BallsFaced >= 10).ToList();
-                var v1 = p.OrderByDescending(p => p.StrikeRate).ToList();
-
+                var v = p.Where(p => p.BallsFaced >= 10).OrderByDescending(p=>p.StrikeRate).ToList();
                 Console.WriteLine("Name      Runs    SR      Avg");
                 Console.WriteLine("---------------------------------------");
-
                 foreach (var pl in p)
                 {
                     Console.WriteLine($"{pl.Name,-7} {pl.RunsScored,5} {pl.StrikeRate,8:F2} {pl.Average,8:F2}");
