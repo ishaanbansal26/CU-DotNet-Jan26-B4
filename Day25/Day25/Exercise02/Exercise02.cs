@@ -1,5 +1,4 @@
-﻿
-namespace Day25
+﻿namespace Day25.Exercise02
 {
     public class Player
     {
