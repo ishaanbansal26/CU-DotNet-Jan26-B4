@@ -1,4 +1,4 @@
-﻿namespace Day27
+﻿namespace Day27.Exercise01
 {
     internal class Program
     {

@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace Day27
+namespace Day27.Exercise02
 {
     public class Loan
     {
