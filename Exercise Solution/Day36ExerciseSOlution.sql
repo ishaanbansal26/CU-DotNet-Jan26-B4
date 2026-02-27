@@ -97,8 +97,34 @@ left join Orders o
     AND o.OrderDate > '1997-12-31'
 where o.OrderID IS NULL ;
 
+--Q16
+select Distinct(e.FirstName + ' ' + e.LastName) as Name, r.RegionDescription from Employees e join EmployeeTerritories 
+et on e.EmployeeID = et.EmployeeID join Territories t
+on et.TerritoryID = t.TerritoryID join Region r on r.RegionID = t.RegionID;
+
 --Q17
 select C.ContactName, S.SupplierID
 from Customers C 
 inner join Suppliers S
 on C.City = S.City;
+
+--Q18
+select c.ContactName from [Order Details] od join Orders o on o.OrderID = 
+od.OrderID join Customers c on c.CustomerID = o.CustomerID join Products
+p on p.ProductID = od.ProductID  group by c.ContactName having 
+count(distinct p.CategoryID) > 3;
+
+--Q19
+select sum(od.UnitPrice * od.Quantity) as totalRevenue, p.ProductName  from Products p join [Order Details] od on 
+p.ProductID = od.ProductID where p.Discontinued = 'True' group by p.ProductName;
+
+--Q20
+SELECT c.CategoryName,p.ProductName,p.UnitPrice
+FROM Categories c
+JOIN Products p 
+ON p.CategoryID = c.CategoryID
+WHERE p.UnitPrice = (
+    SELECT MAX(p2.UnitPrice)
+    FROM Products p2
+    WHERE p2.CategoryID = c.CategoryID
+);
