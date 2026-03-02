@@ -1,0 +1,18 @@
+PORTFOLIO REPORT
+Generated On: 02-03-2026 20:20:56
+
+EQ001 | INFY | Qty: 105 | Current Value: ₹ 1,73,250.00
+BD001 | GovBond | Qty: 50 | Current Value: ₹ 52,500.00
+
+
+Instrument Type: Equity
+Total Investment: ₹ 1,57,500.00
+Current Value: ₹ 1,73,250.00
+Profit/Loss: ₹ 15,750.00
+
+Instrument Type: Bond
+Total Investment: ₹ 50,000.00
+Current Value: ₹ 52,500.00
+Profit/Loss: ₹ 2,500.00
+
+Overall Portfolio Value: ₹ 2,25,750.00
