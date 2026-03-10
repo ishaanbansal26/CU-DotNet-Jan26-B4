@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function colourChange(el){
+            let n1 = document.getElementById('box1');
+            let n2 = document.getElementById('box2');
+            
+             if(el.value == ""){
+                el.style.backgroundColor = "red";
+            }
+            else if(isNaN(el.value)){
+                el.style.backgroundColor = "yellow";
+            }
+            else{
+                el.style.backgroundColor = "white";
+            }
+            // if(n2.value == ""){
+            //     n2.style.backgroundColor = "red";
+            // }
+            // else if(isNaN(n2.value)){
+            //     n2.style.backgroundColor = "yellow";
+            // }
+            // else{
+            //     n2.style.backgroundColor = "white";
+            // }
+        }
+        function add()
+        {
+            let n1 = document.getElementById('box1').value;
+            let n2 = document.getElementById('box2').value;
+            if(!isNaN(n1) && !isNaN(n2) && n1 != "" && n2 != ""){
+                let sum = Number(n1)+Number(n2);
+                document.getElementById('box4').value=sum;
+            }
+            else{
+                document.getElementById('box4').value="Error";
+                document.getElementById("box4").style.backgroundColor = "orange";
+            }
+        }
+    </script>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>
+                <input type="text" name="" id="box1" onblur="colourChange(this)">
+            </td>
+            <td>
+               +
+            </td>
+            <td>
+                <input type="text" name="" id="box2" onblur="colourChange(this)">
+            </td>
+            <td>
+                <button onblur="add()">=</button>
+            </td>
+            <td>
+                <input type="text" id="box4" value="Error">
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
