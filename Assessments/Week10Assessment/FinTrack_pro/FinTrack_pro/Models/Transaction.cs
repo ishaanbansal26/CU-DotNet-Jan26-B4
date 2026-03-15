@@ -1,4 +1,7 @@
-﻿namespace FinTrack_pro.Models
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+
+namespace FinTrack_pro.Models
 {
     public class Transaction
     {
@@ -9,6 +12,7 @@
         public DateTime Date { get; set; }
 
         public int AccountId { get; set; }
+        [ValidateNever]
         public Account Account { get; set; }
     }
 

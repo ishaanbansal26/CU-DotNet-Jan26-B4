@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<FinTrack_pro.Models.Account>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Accounts";
 }
 
-<h1>Index</h1>
+<h1>Accounts</h1>
 
 @if (TempData["Success"] != null)
 {
@@ -21,6 +21,7 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+
 <table class="table">
     <thead>
         <tr>
@@ -31,27 +32,66 @@
             <th>
                 @Html.DisplayNameFor(model => model.AccountHolder)
             </th>
+
             <th>
                 @Html.DisplayNameFor(model => model.Balance)
             </th>
+
+            <!-- ✅ ADDED -->
+            <th>
+                Transactions
+            </th>
+
             <th></th>
         </tr>
     </thead>
+
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.AccountHolder)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Balance)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.AccountId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.AccountId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.AccountId">Delete</a>
-            </td>
-        </tr>
-}
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccountNumber)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccountHolder)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Balance)
+                </td>
+
+                <!-- ✅ ADDED -->
+                <td>
+                    @if (item.Transactions != null && item.Transactions.Count > 0)
+                    {
+                        <ul>
+                            @foreach (var t in item.Transactions)
+                            {
+                                <li>
+                                    @t.Description - @t.Amount - @t.Date.ToShortDateString()
+                                </li>
+                            }
+                        </ul>
+                    }
+                    else
+                    {
+                        <span>No transactions</span>
+                    }
+
+                </td>
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.AccountId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.AccountId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.AccountId">Delete</a>
+                </td>
+
+            </tr>
+        }
+
     </tbody>
 </table>

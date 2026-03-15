@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewData["Title"] = "Search";
+}
+
+<h1>Search</h1>
+
+
+<div class="card" style="width: 18rem;">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">@ViewData["TopGainer"]</h5>
+        <p class="card-text">This is the top gainer with volume = @TempData["Volume"] from @ViewBag.days days</p>
+        <a href="Market/Index" class="btn btn-primary">Go to Index</a>
+    </div>
+</div>

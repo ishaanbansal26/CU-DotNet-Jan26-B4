@@ -23,7 +23,7 @@ namespace FinTrack_pro.Controllers
         // GET: Accounts
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Account.ToListAsync());
+            return View(await _context.Account.Include(a => a.Transactions).ToListAsync());
         }
 
         // GET: Accounts/Details/5
@@ -34,7 +34,7 @@ namespace FinTrack_pro.Controllers
                 return NotFound();
             }
 
-            var account = await _context.Account
+            var account = await _context.Account.Include(a => a.Transactions)
                 .FirstOrDefaultAsync(m => m.AccountId == id);
             if (account == null)
             {
@@ -61,6 +61,7 @@ namespace FinTrack_pro.Controllers
             {
                 _context.Add(account);
                 await _context.SaveChangesAsync();
+                TempData["Success"] = "Account created successfully";
                 return RedirectToAction(nameof(Index));
             }
             return View(account);

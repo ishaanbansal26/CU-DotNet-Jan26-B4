@@ -8,14 +8,20 @@ namespace FinTrack_pro.Controllers
         {
             ViewBag.MarketStatus = "Closed";
             ViewData["TopGainer"] = "FinPro";
-            ViewData["Volume"] = 89;
+            TempData["Volume"] = 89;
             return View();
         }
         [HttpGet("Analyze/{ticker}/{days:int?}")]
         public IActionResult Search(string ticker, int? days)
         {
+            if (days == null)
+                days = 30;
+
             ViewBag.ticker = ticker;
             ViewBag.days = days;
+            ViewData["TopGainer"] = ticker;
+            TempData["Volume"] = days * 10;
+
             return View();
         }
     }

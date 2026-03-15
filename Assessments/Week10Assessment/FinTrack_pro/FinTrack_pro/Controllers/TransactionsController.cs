@@ -46,6 +46,8 @@ namespace FinTrack_pro.Controllers
         // GET: Transactions/Create
         public IActionResult Create()
         {
+            ViewData["AccountId"] =
+            new SelectList(_context.Account, "AccountId", "AccountNumber");
             return View();
         }
 
@@ -62,6 +64,9 @@ namespace FinTrack_pro.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            
+            ViewData["AccountId"] =
+            new SelectList(_context.Account, "AccountId", "AccountNumber", transaction.AccountId);
             return View(transaction);
         }
 
@@ -78,6 +83,11 @@ namespace FinTrack_pro.Controllers
             {
                 return NotFound();
             }
+            ViewData["AccountId"] =
+       new SelectList(_context.Account,
+                      "AccountId",
+                      "AccountNumber",
+                      transaction.AccountId);
             return View(transaction);
         }
 
@@ -86,7 +96,7 @@ namespace FinTrack_pro.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Description,Amount,Category,Date")] Transaction transaction)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Description,Amount,Category,Date,AccountId")] Transaction transaction)
         {
             if (id != transaction.Id)
             {
@@ -113,6 +123,11 @@ namespace FinTrack_pro.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["AccountId"] =
+       new SelectList(_context.Account,
+                      "AccountId",
+                      "AccountNumber",
+                      transaction.AccountId);
             return View(transaction);
         }
 
