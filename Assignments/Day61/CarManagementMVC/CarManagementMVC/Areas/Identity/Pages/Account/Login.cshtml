@@ -1,0 +1,172 @@
+﻿@page
+@model LoginModel
+
+<style>
+    :root {
+    --nav-height: 70px;
+    --footer-height: 70px;
+}
+    html, body { height: 100%; margin: 0; }
+
+    body {
+        /* background: linear-gradient(to bottom, #3f51f7 50%, #c7d2fe 50%); */
+        /* background :#f5f6fa; */
+        /* background: linear-gradient(135deg, #cfd6f6, #e4e7fb); */
+        /* linear-gradient(#e9ecf7, #dfe3f0) */
+        /* background-color: #f5f7fb; */
+        
+        background: linear-gradient(135deg, #e9ecf7, #dfe3f0);
+}
+    
+
+    /* FIXED */
+   .login-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: calc(
+        100vh - var(--nav-height) - var(--footer-height)
+    );
+
+    padding: 0;
+}
+
+    .login-card {
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        width: 900px;
+        max-width: 100%;
+    }
+
+    .left-side { padding: 40px; }
+
+    .right-side {
+        background: #f5f6fa;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: 30px;
+    }
+
+    .right-side img {
+        /* max-width: 100%; */
+        width:300px;
+        height: auto;
+    }
+
+    .login-title { font-weight: 700; font-size: 28px; }
+    .login-sub { color: gray; margin-bottom: 20px; }
+
+    .btn-purple {
+        background-color: #3f51f7;
+        color: white;
+        border: none;
+        border-radius: 6px;
+    }
+
+    .btn-purple:hover {
+        background-color: #2f3de0;
+        color: white;
+    }
+
+</style>
+
+<div class="login-wrapper">
+
+<div class="page-content" style="--nav-height:70px; --footer-height:70px;">
+
+    <div class="login-card">
+
+        <div class="row g-0">
+
+            <div class="col-md-6 left-side">
+
+                <h3 class="login-title">Login</h3>
+                <p class="login-sub">Please enter your details</p>
+
+                <form method="post">
+
+                    <div asp-validation-summary="ModelOnly"
+                         class="text-danger"></div>
+
+                    <div class="mb-3">
+                        <label asp-for="Input.Email"></label>
+
+                        <input asp-for="Input.Email"
+                               class="form-control"
+                               placeholder="Email address" />
+
+                        <span asp-validation-for="Input.Email"
+                              class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Input.Password"></label>
+
+                        <input asp-for="Input.Password"
+                               class="form-control"
+                               placeholder="Password" />
+
+                        <span asp-validation-for="Input.Password"
+                              class="text-danger"></span>
+                    </div>
+
+                    <div class="d-flex justify-content-between mb-3">
+
+                        <div>
+                            <input asp-for="Input.RememberMe" />
+                            <label asp-for="Input.RememberMe"></label>
+                        </div>
+
+                        <a asp-page="./ForgotPassword">
+                            Forgot password?
+                        </a>
+
+                    </div>
+
+                    <button type="submit"
+                            class="btn btn-purple w-100">
+                        Login
+                    </button>
+
+                    <div class="text-center mt-3">
+
+                        Don't have an account?
+                        <a asp-page="./Register"
+                           asp-route-returnUrl="@Model.ReturnUrl">
+                            Sign up
+                        </a>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+            <div class="col-md-6 right-side">
+
+                <img src="/images/Carlogo-removebg-preview.png" />
+
+                <h5 class="mt-3">Welcome to CarManagementMVC</h5>
+
+                <p class="text-muted text-center">
+                    Track your Cars record easily and effortlessly
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</div>
+
+@section Scripts { <partial name="_ValidationScriptsPartial" />
+}
