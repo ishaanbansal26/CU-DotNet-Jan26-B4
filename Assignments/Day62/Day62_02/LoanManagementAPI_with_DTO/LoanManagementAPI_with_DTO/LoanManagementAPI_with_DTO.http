@@ -1,0 +1,6 @@
+@LoanManagementAPI_with_DTO_HostAddress = http://localhost:5119
+
+GET {{LoanManagementAPI_with_DTO_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
