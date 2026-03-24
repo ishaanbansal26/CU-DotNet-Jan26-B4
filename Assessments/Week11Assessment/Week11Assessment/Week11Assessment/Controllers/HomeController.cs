@@ -1,8 +1,8 @@
 using System.Diagnostics;
-using GlobalMart.Models;
 using Microsoft.AspNetCore.Mvc;
+using Week11Assessment.Models;
 
-namespace GlobalMart.Controllers
+namespace Week11Assessment.Controllers
 {
     public class HomeController : Controller
     {

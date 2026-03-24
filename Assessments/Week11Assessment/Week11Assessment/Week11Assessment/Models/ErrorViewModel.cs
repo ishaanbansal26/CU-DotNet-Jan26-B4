@@ -1,4 +1,4 @@
-namespace GlobalMart.Models
+namespace Week11Assessment.Models
 {
     public class ErrorViewModel
     {

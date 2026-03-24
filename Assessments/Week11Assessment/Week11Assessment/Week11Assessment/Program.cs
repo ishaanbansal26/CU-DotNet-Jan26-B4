@@ -1,6 +1,6 @@
-using GlobalMart.Services;
+using Week11Assessment.Services;
 
-namespace GlobalMart
+namespace Week11Assessment
 {
     public class Program
     {
@@ -10,8 +10,7 @@ namespace GlobalMart
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-
-            builder.Services.AddScoped<IPricingService, PricingService>();
+            builder.Services.AddScoped<IPricingService, PricingService1>();
 
             var app = builder.Build();
 
