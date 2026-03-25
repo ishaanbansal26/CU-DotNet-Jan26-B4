@@ -26,6 +26,7 @@ namespace CapstoneMiniProject.WebAPIServices
                 Name = dto.Name,
                 Balance = dto.InitialDeposit
             };
+            account.AccountNumber = AccountNumberGenerator.Generate(account.AccountId);
             await _accountRepository.AddAccount(account);
             return account;
 

@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Xml;
+using CapstoneMiniProject.Data;
+using CapstoneMiniProject.DTOs;
+using CapstoneMiniProject.Exceptions;
+using CapstoneMiniProject.Models;
+using CapstoneMiniProject.WebAPIServices;
+using Humanizer;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using CapstoneMiniProject.Data;
-using CapstoneMiniProject.Models;
-using CapstoneMiniProject.WebAPIServices;
-using CapstoneMiniProject.DTOs;
-using System.Xml;
 
 namespace CapstoneMiniProject.Controllers
 {
@@ -37,8 +39,15 @@ namespace CapstoneMiniProject.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Account>> GetAccount(int id)
         {
-            var account = await _accountService.GetAccountById(id);
-            return account;
+            try
+            {
+                var account = await _accountService.GetAccountById(id);
+                return account;
+            }
+            catch(NotFoundException e)
+            {
+                return NotFound(e.Message);
+            }
         }
 
         // PUT: api/Account/5
@@ -46,8 +55,19 @@ namespace CapstoneMiniProject.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutAccount(int id, CreateAccountDto dto)
         {
-            await _accountService.UpdateAccount(id,dto);
-            return NoContent();
+            try
+            {
+                await _accountService.UpdateAccount(id, dto);
+                return Ok($"Updated Account {id}");
+            }
+            catch(BadRequestException e)
+            {
+                return BadRequest(e.Message);
+            }
+            catch(NotFoundException e)
+            {
+                return NotFound(e.Message);
+            }
         }
 
 
@@ -56,30 +76,68 @@ namespace CapstoneMiniProject.Controllers
         [HttpPost]
         public async Task<ActionResult<Account>> PostAccount(CreateAccountDto dto)
         {
-            var account = await _accountService.AddAccount(dto);
-            return NoContent();
+            try
+            {
+                var account = await _accountService.AddAccount(dto);
+                return CreatedAtAction(nameof(GetAccount), new { id = account.AccountId }, account);
+            }
+            catch(Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+            
         }
 
         // DELETE: api/Account/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAccount(int id)
         {
-            var account = await _accountService.GetAccountById(id);
-            await _accountService.RemoveAccount(account.AccountId);
-            return NoContent();
+            try
+            {
+                var account = await _accountService.GetAccountById(id);
+                await _accountService.RemoveAccount(account.AccountId);
+                return Ok($"Deleted AccountID {account.AccountId}");
+            }
+            catch(Exception e)
+            {
+                return NotFound(e.Message);
+            }
+            
         }
 
         [HttpPost("withdraw")]
         public async Task<IActionResult> Withdraw(TransactionDto dto)
         {
-            await _accountService.Withdraw(dto);
-            return NoContent();
+            try
+            {
+                await _accountService.Withdraw(dto);
+                return Ok($"withdrawn {dto.Amount} in AccountID {dto.AccountId}");
+            }
+            catch(BadRequestException e)
+            {
+                return BadRequest(e.Message);
+            }
+            catch(NotFoundException e)
+            {
+                return NotFound(e.Message);
+            }
         }
         [HttpPost("deposit")]
         public async Task<IActionResult> Deposit(TransactionDto dto)
         {
-            await _accountService.Deposit(dto);
-            return NoContent();
+            try
+            {
+                await _accountService.Deposit(dto);
+                return Ok($"deposited {dto.Amount} in AccountID {dto.AccountId}");
+            }
+            catch(BadRequestException e)
+            {
+                return BadRequest(e.Message);
+            }
+            catch(NotFoundException e)
+            {
+                return NotFound(e.Message);
+            }
         }
     }
 }

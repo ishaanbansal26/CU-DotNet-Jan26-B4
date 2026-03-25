@@ -18,7 +18,9 @@ namespace CapstoneMiniProject.Repositories
         {
             await _context.Account.AddAsync(account);
             await _context.SaveChangesAsync();
-            account.AccountNumber = AccountNumberGenerator.Generate(account.AccountId); 
+            account.AccountNumber = AccountNumberGenerator.Generate(account.AccountId);
+            await _context.SaveChangesAsync();
+            account.CreatedAt = DateTime.Now;
             await _context.SaveChangesAsync();
 
         }
