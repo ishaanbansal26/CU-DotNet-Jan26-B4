@@ -1,0 +1,7 @@
+<Solution>
+  <Folder Name="/Services/">
+    <Project Path="GPSTrackingService/GPSTrackingService.csproj" Id="169607c7-f1bf-4a9a-88be-d0e8069f9b35" />
+    <Project Path="IdentityService/IdentityService.csproj" />
+    <Project Path="SecureFleetManagement/TrackingService.csproj" />
+  </Folder>
+</Solution>

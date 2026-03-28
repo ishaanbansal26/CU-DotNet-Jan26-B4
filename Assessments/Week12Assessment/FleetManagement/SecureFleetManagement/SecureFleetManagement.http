@@ -1,0 +1,6 @@
+@SecureFleetManagement_HostAddress = http://localhost:5147
+
+GET {{SecureFleetManagement_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
