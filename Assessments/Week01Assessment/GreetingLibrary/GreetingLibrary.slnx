@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="../../../Assignments/Day06/Day6Exercise/GreetingApp/GreetingApp.csproj" />
+  <Project Path="../../../Assignments/Day06/Day6Exercise/GreetingLibrary/GreetingLibrary.csproj" />
+</Solution>
