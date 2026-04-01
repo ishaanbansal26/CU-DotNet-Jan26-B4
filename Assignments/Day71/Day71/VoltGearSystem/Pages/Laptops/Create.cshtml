@@ -1,0 +1,59 @@
+﻿@page 
+@model VoltGearSystem.Pages.Laptops.CreateModel
+@{
+    Layout = "_Layout";
+}
+
+
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+
+            <div class="card shadow rounded-4">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Add Laptop</h4>
+                </div>
+
+                <div class="card-body p-4">
+                    <form method="post">
+
+                        @* <div class="mb-3">
+                            <label asp-for="Laptop.SerialNumber" class="form-label"></label>
+                            <input asp-for="Laptop.SerialNumber" class="form-control" placeholder="Enter serial number" />
+                            <span asp-validation-for="Laptop.SerialNumber" class="text-danger"></span>
+                        </div> *@
+
+                        <div class="mb-3">
+                            <label asp-for="Laptop.ModelName" class="form-label"></label>
+                            <input asp-for="Laptop.ModelName" class="form-control" placeholder="Enter model name" />
+                            <span asp-validation-for="Laptop.ModelName" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Laptop.Price" class="form-label"></label>
+                            <input asp-for="Laptop.Price" type="number" class="form-control" placeholder="Enter price" />
+                            <span asp-validation-for="Laptop.Price" class="text-danger"></span>
+                        </div>
+
+                        <div class="d-flex justify-content-between mt-4">
+                            <a asp-page="Index" class="btn btn-outline-secondary">
+                                ← Back
+                            </a>
+
+                            <button type="submit" class="btn btn-primary px-4">
+                                Save
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
