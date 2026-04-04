@@ -1,0 +1,6 @@
+@VagaBondAPI_HostAddress = http://localhost:5079
+
+GET {{VagaBondAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
