@@ -44,10 +44,10 @@ namespace FinTrack_pro.Controllers
         }
 
         // GET: Transactions/Create
-        public IActionResult Create()
+        public IActionResult Create(int? accountId)
         {
             ViewData["AccountId"] =
-            new SelectList(_context.Account, "AccountId", "AccountNumber");
+                new SelectList(_context.Account, "AccountId", "AccountNumber", accountId);
             return View();
         }
 

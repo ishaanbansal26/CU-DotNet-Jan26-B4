@@ -3,15 +3,45 @@
     ViewData["Title"] = "Index";
 }
 
-<div class="container border-1 text-center">
+
     
-    <h1>Product Index</h1>
+    @* <h1>Product Index</h1>
     <h3>Total Amount - @ViewBag.Price</h3>
     <h3>Discount Applied - WINTER25</h3>
     <h3>After Discount - @ViewBag.winter</h3>
     <h3>Discount Applied - FREESHIP</h3>
-    <h3>After Discount - @ViewBag.freeship</h3>
+    <h3>After Discount - @ViewBag.freeship</h3> *@
 
-  
+    
+    
+    <div class="container border border-2">
+
+
+    <h1>Product Index</h1>
+    <form method="post" action="/Cart/GoToCart">
+    
+        <table class="table">
+            <tr>
+                <td>
+                    <label class="fw-bold">Enter Amount:</label>
+                    <input type="number" name="price" placeholder="Enter price" required />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label class="fw-bold">Select Promo Code</label>
+                    <select name="code">
+                        <option value="">-- No Promo --</option>
+                        <option value="WINTER25">WINTER25 (15% OFF)</option>
+                        <option value="FREESHIP">FREESHIP ($5 OFF)</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <button type="submit" class="btn btn-outline-dark">
+            Add to Cart
+        </button>
+    </form>
 </div>
+
 

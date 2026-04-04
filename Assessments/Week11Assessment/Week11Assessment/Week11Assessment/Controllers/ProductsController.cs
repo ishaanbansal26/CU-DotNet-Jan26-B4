@@ -14,10 +14,10 @@ namespace Week11Assessment.Controllers
         public IActionResult Index()
         {
 
-            double price = 5000;
-            ViewBag.Price = price;
-            ViewBag.winter = _pricingService.ApplyDiscount(price,"WINTER25");
-            ViewBag.freeship = _pricingService.ApplyDiscount(price,"FREESHIP");
+            //double price = 5000;
+            //ViewBag.Price = price;
+            //ViewBag.winter = _pricingService.ApplyDiscount(price,"WINTER25");
+            //ViewBag.freeship = _pricingService.ApplyDiscount(price,"FREESHIP");
             return View();
         }
     }

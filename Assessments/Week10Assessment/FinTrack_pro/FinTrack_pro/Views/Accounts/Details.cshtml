@@ -28,3 +28,63 @@
     <a asp-action="Edit" asp-route-id="@Model?.AccountId">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
+
+<div>
+    <h4>Transactions</h4>
+    <hr />
+    @if (Model?.Transactions != null && Model.Transactions.Count > 0)
+    {
+        var transactions = Model.Transactions.OrderBy(t => t.Date).ToList();
+        double netEffect = 0;
+        foreach (var t in transactions)
+        {
+            var cat = (t.Category ?? string.Empty).ToLower();
+            bool isDebit = cat.Contains("expense") || cat.Contains("debit");
+            netEffect += isDebit ? -t.Amount : t.Amount;
+        }
+
+        // Calculate initial balance before these transactions so that
+        // applying them in order results in the current Account.Balance
+        double initialBalance = Model.Balance - netEffect;
+        double runningBalance = initialBalance;
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th>Debit</th>
+                    <th>Credit</th>
+                    <th>Remaining Balance</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var t in transactions)
+                {
+                    var cat = (t.Category ?? string.Empty).ToLower();
+                    bool isDebit = cat.Contains("expense") || cat.Contains("debit");
+                    if (isDebit)
+                    {
+                        runningBalance -= t.Amount;
+                    }
+                    else
+                    {
+                        runningBalance += t.Amount;
+                    }
+
+                    <tr>
+                        <td>@t.Date.ToShortDateString()</td>
+                        <td>@t.Description</td>
+                        <td class="text-danger">@((isDebit) ? t.Amount.ToString("C") : String.Empty)</td>
+                        <td class="text-success">@((!isDebit) ? t.Amount.ToString("C") : String.Empty)</td>
+                        <td>@runningBalance.ToString("C")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div>No transactions</div>
+    }
+</div>

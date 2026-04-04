@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Week11Assessment.Services;
 
 namespace Week11Assessment.Controllers
@@ -11,15 +12,22 @@ namespace Week11Assessment.Controllers
         {
             _pricingService = pricingService;
         }
-        public IActionResult Index()
+        public IActionResult Index(double price,string code)
         {
-            double price = 5000;
-            double price2 = 2000;
-            double price3 = 3000;
-            double total = price + price2 + price3;
-            ViewBag.BeforeDiscount = total;
-            ViewBag.FinalTotal = _pricingService.ApplyDiscount(total,"WINTER25");
+            //double price = 5000;
+            //double price2 = 2000;
+            //double price3 = 3000;
+            //double total = price + price2 + price3;
+            ViewBag.BeforeDiscount = price;
+            ViewBag.code = code;
+            ViewBag.FinalTotal = _pricingService.ApplyDiscount(price,code);
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult GoToCart(double price,string code)
+        {
+            return RedirectToAction(nameof(Index), new { price, code });
         }
     }
 }

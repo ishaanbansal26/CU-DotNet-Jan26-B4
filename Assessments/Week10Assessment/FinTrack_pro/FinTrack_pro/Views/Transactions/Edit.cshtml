@@ -25,13 +25,22 @@
             </div>
             <div class="form-group">
                 <label asp-for="Category" class="control-label"></label>
-                <input asp-for="Category" class="form-control" />
+                <select asp-for="Category" class="form-control">
+                    <option value="">-- Select --</option>
+                    <option value="Debit">Debit</option>
+                    <option value="Credit">Credit</option>
+                </select>
                 <span asp-validation-for="Category" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Date" class="control-label"></label>
                 <input asp-for="Date" class="form-control" />
                 <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AccountId">AccountNumber</label>
+                <select asp-for="AccountId" asp-items="ViewBag.AccountId" class="form-control"></select>
+                <span asp-validation-for="AccountId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

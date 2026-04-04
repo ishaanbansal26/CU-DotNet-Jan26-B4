@@ -2,15 +2,13 @@
 @{
     ViewData["Title"] = "Index";
 }
-<div class="container border-1 text-center">
+<div class="container border border-2">
     
-    <h1>Cart Index</h1>
-    <h3>Total Amount - @ViewBag.BeforeDiscount</h3>
-    <h3>Discount Applied - WINTER25</h3>
-    <h3>After Discount - @ViewBag.FinalTotal</h3>
-
-   
-    
+    <h1 class="fw-bold">Cart Index</h1>
+    <h5>Total Amount - @ViewBag.BeforeDiscount</h5>
+    <h5>Discount Applied - @ViewBag.code</h5>
+    <h5>After Discount - @ViewBag.FinalTotal</h5>
+    <a href="https://localhost:7285/Products/Index">Back to Products</a>
 </div>
 
 
