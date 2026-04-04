@@ -63,6 +63,8 @@ namespace Day56.Controllers
                 {
                     return View(loan);
                 }
+                var x = _loans.Max(id => id.Id) + 1;
+                loan.Id = x;
                 _loans.Add(loan);
                 return RedirectToAction("Index");
             }
@@ -117,11 +119,13 @@ namespace Day56.Controllers
         public ActionResult Delete(int id,Loan loan)
         {
             var l = _loans.Find(x => x.Id == id);
-
-            if (l != null)
+            
+            if (loan != null)
             {
                 _loans.Remove(l);
             }
+            
+            //_loans.RemoveAll(x => x.Id == id);
 
             return RedirectToAction(nameof(Index));
         }

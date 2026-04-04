@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace CapstoneMiniProject.Migrations
+namespace AccountService.Migrations
 {
     [DbContext(typeof(CapstoneMiniProjectContext))]
     partial class CapstoneMiniProjectContextModelSnapshot : ModelSnapshot

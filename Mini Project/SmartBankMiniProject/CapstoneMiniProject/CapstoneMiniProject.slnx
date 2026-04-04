@@ -1,3 +1,6 @@
 <Solution>
-  <Project Path="CapstoneMiniProject/CapstoneMiniProject.csproj" />
+  <Folder Name="/Services/">
+    <Project Path="AuthService/AuthService.csproj" Id="9def5093-e88c-43cb-9b92-9abbfbf470f1" />
+    <Project Path="CapstoneMiniProject/AccountService.csproj" />
+  </Folder>
 </Solution>

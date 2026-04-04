@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace CapstoneMiniProject.Migrations
+namespace AccountService.Migrations
 {
     /// <inheritdoc />
     public partial class init : Migration

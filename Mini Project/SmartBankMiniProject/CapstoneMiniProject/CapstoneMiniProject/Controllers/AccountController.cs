@@ -9,6 +9,7 @@ using CapstoneMiniProject.Exceptions;
 using CapstoneMiniProject.Models;
 using CapstoneMiniProject.WebAPIServices;
 using Humanizer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -17,6 +18,7 @@ namespace CapstoneMiniProject.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class AccountController : ControllerBase
     {
         private readonly CapstoneMiniProjectContext _context;

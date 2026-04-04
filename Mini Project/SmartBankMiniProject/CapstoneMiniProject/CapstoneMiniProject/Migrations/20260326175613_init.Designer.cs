@@ -9,10 +9,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace CapstoneMiniProject.Migrations
+namespace AccountService.Migrations
 {
     [DbContext(typeof(CapstoneMiniProjectContext))]
-    [Migration("20260324091933_init")]
+    [Migration("20260326175613_init")]
     partial class init
     {
         /// <inheritdoc />

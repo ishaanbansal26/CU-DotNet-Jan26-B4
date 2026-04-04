@@ -8,11 +8,11 @@ using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace CapstoneMiniProject.WebAPIServices
 {
-    public class AccountService : IAccountService
+    public class AccountServices : IAccountService
     {
         private IAccountRepository _accountRepository;
 
-        public AccountService(IAccountRepository accountRepository)
+        public AccountServices(IAccountRepository accountRepository)
         {
             _accountRepository = accountRepository;
         }
