@@ -8,7 +8,6 @@ namespace NorthwindCatalog.Tests
         [Fact]
         public void Matching_InventoryValue()
         {
-            // Arrange
             var product = new ProductDto
             {
                 ProductName = "Test Product",
@@ -16,10 +15,7 @@ namespace NorthwindCatalog.Tests
                 UnitsInStock = 5
             };
 
-            // Act
             var result = product.InventoryValue;
-
-            // Assert
             Assert.Equal(50, result);
         }
     }
