@@ -1,0 +1,34 @@
+﻿@model List<ProductDto>
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Products</h2>
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-3 mb-4">
+                <div class="card shadow h-100">
+
+                    <div class="card-body">
+                        <h5 class="card-title">@item.ProductName</h5>
+
+                        <p><strong>Price:</strong> ₹@item.UnitPrice</p>
+                        <p><strong>Stock:</strong> @item.UnitsInStock</p>
+
+                        <p class="text-success">
+                            <strong>Inventory Value:</strong>
+                            ₹@item.InventoryValue
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="text-center mt-3">
+        <a href="/Categories" class="btn btn-secondary">
+            Back to Categories
+        </a>
+    </div>
+</div>
